@@ -3,6 +3,19 @@ from django.utils.timezone import now
 
 
 # Create your models here.
+class Dealership(models.Model):
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    st = models.CharField(max_length=2)
+    address = models.CharField(max_length=255)
+    zip = models.CharField(max_length=10)
+    lat = models.FloatField()
+    long = models.FloatField()
+    short_name = models.CharField(max_length=100)
+    full_name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.full_name
 
 # <HINT> Create a Car Make model `class CarMake(models.Model)`:
 # - Name

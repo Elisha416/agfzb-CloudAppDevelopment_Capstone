@@ -15,6 +15,11 @@ logger = logging.getLogger(__name__)
 
 
 # Create your views here.
+from .models import Dealership
+
+def index(request):
+    dealerships = Dealership.objects.all()
+    return render(request, 'index.html', {'dealerships': dealerships})
 
 
 # Create an `about` view to render a static about page

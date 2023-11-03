@@ -17,27 +17,34 @@
     <!-- Remove this line the first time you edit this file -->
      This is the index page of your Django app!
     <!--Add a nav bar here -->
-    {% if user.is_authenticated %}
-    <div class="rightalign">
-        <div class="dropdown">
-            <button class="dropbtn">{{user.first_name}}</button>
-            <div class="dropdown-content">
-                <a href="{% url 'djangoapp:logout' %}">Logout</a>
-            </div>
-        </div>
-    </div>
-    {% else %}
-    <div class="rightalign">
-        <div class="dropdown">
-            <button class="dropbtn">Visitor</button>
-            <div class="dropdown-content">
-                <a href="{% url 'djangoapp:registration' %}">Signup</a>
-                <a href="{% url 'djangoapp:login' %}">Login</a>
-            </div>
-        </div>
-    </div>
-{% endif %}
-    <!--Add a dealer table here -->
+    <h1>List of Dealerships</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Address</th>
+                <!-- Add more table headers for other fields as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for dealership in dealerships %}
+            <tr>
+                <td>{{ dealership.id }}</td>
+                <td>{{ dealership.city }}</td>
+                <td>{{ dealership.state }}</td>
+                <td>{{ dealership.address }}</td>
+                <!-- Add more table cells for other fields as needed -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No dealerships available</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
 
     </body>
 
